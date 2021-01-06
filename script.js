@@ -1,1 +1,2 @@
-var beginBtn = document.querySelector("begin-button")
+// Variables needed
+var beginBtn = document.getElementById("begin-button")
