@@ -1,7 +1,22 @@
-/* Quiz area */
+/* Page */
 .container {
-    margin: 5px;
-    padding: 20px;
-    justify-content: center;
+    align-items: center;
     text-align: center;
+}
+/* Quiz area */
+.quiz-block {
+    height: fit-content;
+    margin: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-style: solid;
+    border-color: teal;
+    border-width: 3px;
+    align-items: center;
+    text-align: center;
+}
+/* Quiz Button */
+.begin-button {
+    color: white;
+    background-color: purple;
 }
