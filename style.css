@@ -11,27 +11,24 @@ html {
     border-radius: 5px;
     width: 800px;
     max-width: 80%;
-    background-color: lightblue;
+    background-color: lightgrey;
 }
 /* Body */
 body {
-    padding: 0;
-    margin: 0;
+    margin-top: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 100vw;
 }
 /* Quiz Block */
 .quiz-block {
     display: grid;
 }
-.high-scores {
-    float: left;
-}
+
 .timer {
     float: right;
+    padding-right: 5px;
 }
 p {
     text-align: center;
@@ -44,7 +41,10 @@ p {
 .btn {
     background-color: purple;
     color: white;
-    display: flex;
     align-items: center;
+    padding: 10px;
     margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
