@@ -1,19 +1,20 @@
 // Variables needed
 // Buttons
-var startBtn = document.getElementById("start-btn")
-var submitScore = document.getElementById("score-btn")
-var userChoice = document.getElementById("user-choice")
+var startBtn = document.getElementById("start-btn");
+var userChoice = document.getElementById("user-choice");
 // Quiz Block
-var quizBlock = document.getElementById("quiz-block")
+var quizBlock = document.getElementById("quiz-block");
+var questionLine = document.getElementById("question-line");
 // Time
-var timer = document.getElementById("timer")
+var timer = document.getElementById("timer");
+var timeLeft = 60;
+var penalty = 10;
 
 // Score
 var score = 0;
 
-var startQuiz = ""
-
 //Questions
+var questionIndex = 0;
 var questions = [
     {
         question: "What does HTML stand for?",
@@ -46,14 +47,51 @@ var questions = [
         answer: "African or European?",
     }
 ];
-// Timer
-function setTime(){
-    var timerInterval = setInterval(function(){
-        timeLeft--;
-        timer.textContent = timeLeft;
 
-        if(timeLeft === 0){
-            clearInterval(timerInterval);
+// Start
+startBtn.addEventListener("click", function() {
+    // Timer
+    function setTime(){
+        var timerInterval = setInterval(function(){
+            timeLeft--;
+            timer.textContent = "Time Remaining: " + timeLeft + "s";
+    
+            if(timeLeft === 0){
+                clearInterval(timerInterval);
+            }
+        }, 1000);
+    }   render(questionIndex);
+    setTime();
+    // Questions
+    function render(questionIndex) {
+        questions.innerHTML = "";
+        for(var i = 0; i < questions.length; i++) {
+            var quizQuestion = questions[questionIndex].question;
+            var userChoice = questions[questionIndex].choices;
+            questions.textContent = quizQuestion;
         }
-    });
-}
+
+        userChoice.forEach(function(newItem) {
+            var listItem = document.createElement("li");
+            listItem.textContent = newItem;
+            userChoice.appendChild(ulCreate);
+            ulCreate.appendChild(listItem);
+            listeItem.addEventListener("click", (compare));
+
+        })
+    }
+    function compare(event) {
+        var element = event.target;
+        if(element.matches("li")) {
+            var createDiv = document.createElement("div");
+            createDiv.setAttribute("id", "createDiv");
+            if(element.textContent == questions[questionIndex].answer) {
+                score++;
+                createDiv.textContent = "Correct";
+            } else {
+                timeLeft = timeLeft - penalty;
+                createDiv.textContent = "Nope";
+            }
+        }
+    }
+})
