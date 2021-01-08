@@ -1,7 +1,7 @@
 // Variables needed
 // Buttons
 var startBtn = document.getElementById("start-btn");
-var userChoice = document.getElementById("user-choice");
+var userChoice = document.getElementById("user-choices");
 // Quiz Block
 var quizBlock = document.getElementById("quiz-block");
 var questionLine = document.getElementById("question-line");
@@ -12,6 +12,9 @@ var penalty = 10;
 
 // Score
 var score = 0;
+
+// list shortcut
+var createList = document.createElement("ul");
 
 //Questions
 var questionIndex = 0;
@@ -41,15 +44,11 @@ var questions = [
         choices: ["$var", "vari", "$var =", "var"],
         answer: "var"
     },
-    {
-        question: "What is the airspeed velocity of an unladen swallow?",
-        choices: ["24mph", "32mph", "15mph", "African or European?"],
-        answer: "African or European?",
-    }
 ];
 
 // Start
 startBtn.addEventListener("click", function() {
+    
     // Timer
     function setTime(){
         var timerInterval = setInterval(function(){
@@ -62,9 +61,11 @@ startBtn.addEventListener("click", function() {
         }, 1000);
     }   render(questionIndex);
     setTime();
+    
     // Questions
     function render(questionIndex) {
         questions.innerHTML = "";
+        createList.innerHTML = "";
         for(var i = 0; i < questions.length; i++) {
             var quizQuestion = questions[questionIndex].question;
             var userChoice = questions[questionIndex].choices;
@@ -72,26 +73,13 @@ startBtn.addEventListener("click", function() {
         }
 
         userChoice.forEach(function(newItem) {
-            var listItem = document.createElement("li");
+            var listItem = document.createElement("button");
             listItem.textContent = newItem;
-            userChoice.appendChild(ulCreate);
-            ulCreate.appendChild(listItem);
-            listeItem.addEventListener("click", (compare));
+            quizBlock.appendChild(createList);
+            createList.appendChild(listItem);
+            
+        });
+        
+    };
 
-        })
-    }
-    function compare(event) {
-        var element = event.target;
-        if(element.matches("li")) {
-            var createDiv = document.createElement("div");
-            createDiv.setAttribute("id", "createDiv");
-            if(element.textContent == questions[questionIndex].answer) {
-                score++;
-                createDiv.textContent = "Correct";
-            } else {
-                timeLeft = timeLeft - penalty;
-                createDiv.textContent = "Nope";
-            }
-        }
-    }
-})
+});
