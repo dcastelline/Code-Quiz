@@ -2,19 +2,16 @@
 // Buttons
 var startBtn = document.getElementById("start-btn")
 var submitScore = document.getElementById("score-btn")
+var userChoice = document.getElementById("user-choice")
 // Quiz Block
 var quizBlock = document.getElementById("quiz-block")
 // Time
 var timer = document.getElementById("timer")
-var lostTime = 10;
-var timeLeft = 60;
-var timeInterval = 0;
+
 // Score
 var score = 0;
-// Question asked tracker
-var questionAsked = 0;
-// New element shortcut
-var newEl = document.createElement("ul");
+
+var startQuiz = ""
 
 //Questions
 var questions = [
@@ -44,7 +41,19 @@ var questions = [
         answer: "var"
     },
     {
-        question: "What is the airspeed velocity of an unladen swallow?"
-        choices: ["24mph", "32mph", "15mph", "African or European?"]
-        answer: "African or European?"
+        question: "What is the airspeed velocity of an unladen swallow?",
+        choices: ["24mph", "32mph", "15mph", "African or European?"],
+        answer: "African or European?",
     }
+];
+// Timer
+function setTime(){
+    var timerInterval = setInterval(function(){
+        timeLeft--;
+        timer.textContent = timeLeft;
+
+        if(timeLeft === 0){
+            clearInterval(timerInterval);
+        }
+    });
+}
